@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   HashRouter as Router,
-  Redirect,
+  // Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -10,7 +10,7 @@ import Home from 'routes/Home';
 import Navigation from 'components/Navigation';
 import Profile from 'routes/Profile';
 
-const AppRouter = ({ isLogginedIn }) => {
+const AppRouter = ({ isLogginedIn, userObj }) => {
   return (
     <Router>
       {/* (&&)은 Navigation이  존재하려면 isLogginedIn이 true 여야 한다는걸 의미한다.*/}
@@ -19,10 +19,10 @@ const AppRouter = ({ isLogginedIn }) => {
         {isLogginedIn ? (
           <>
             <Route exact path="/">
-              <Home />
+              <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
-              <Profile />
+              <Profile userObj={userObj} />
             </Route>
             {/* <Redirect from="*" to="/" /> */}
           </>
